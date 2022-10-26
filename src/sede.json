@@ -1,0 +1,22 @@
+{
+    "sedes":[
+        {
+            "sede": "Tucumán",
+            "direccion": "Catamarca 1053 Tucumán",
+            "tel": "0381 4508600 | Fax: 4508653",
+            "img":"https://cofaral.s3.us-east-2.amazonaws.com/prod/images/firm/tucuman.png"
+        },
+        {
+            "sede": "Salta",
+            "direccion": "Alsina 1092 Salta",
+            "tel": "0387 4311533 | 4211884",
+            "img":""
+        },
+        {
+            "sede": "Chaco",
+            "direccion": "25 de Mayo 656 Chaco",
+            "tel":"0362 4444282 | 4425561",
+            "img":""
+        }
+    ]
+}

@@ -2,11 +2,13 @@ import React from 'react'
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { Button, Container, FormControlLabel, Switch, TextField, Typography, } from "@material-ui/core";
+import { Button, Container, FormControlLabel, InputLabel, MenuItem, Select, TextField, Typography} from "@material-ui/core";
 import Logo from "./assets/logo.png";
 import Signature from "./Signature";
 import { CheckOutlined, FileCopyOutlined } from "@material-ui/icons";
 import CircularProgressWithLabel from "./CircularProgressWithLabel";
+import data from "./posiciones.json"
+import infoSede from "./sede.json"
 import "./App.css";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -41,6 +43,13 @@ const useStyles = makeStyles((theme: Theme) =>
       color: "#FFDC00",
       verticalAlign: "middle",
     },
+    centerSelect: {
+      display: "flex",
+      margin: "0 auto",
+      padding: "8px",
+      justifyContent: "center",
+      alignItems:"center"
+    }
   })
 );
 
@@ -49,6 +58,8 @@ export interface PhotoSignatureProps {
   position: string;
   email: string;
   phone: string;
+  address: string;
+  addressIcon:string;
   photo: string;
 }
 
@@ -62,6 +73,8 @@ const initialState: State = {
   position: "",
   email: "",
   phone: "",
+  address:"",
+  addressIcon:"",
   photo: "",
   withPhoto: false,
   copied: false,
@@ -84,6 +97,22 @@ const App = () => {
       }));
     }
   }
+  const handleChangeSelect = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown; }>) => {
+    if (event.target.name === "sucursal" && event.target.value !==5) {
+      setState((prevState) => ({
+        ...prevState,
+        ["phone" as any] : infoSede.sedes[event.target.value as any].tel,
+        ["address" as any] : infoSede.sedes[event.target.value as any].direccion,
+        ["addressIcon" as any] : infoSede.sedes[event.target.value as any].img
+        //[event.target.name as any]: event.target,
+      }));
+    } else {
+      setState((prevState) => ({
+        ...prevState,
+        [event.target.name as any]: event.target.value,
+      }));
+    }
+  }
 
   const enoughData = () => {
     let progress = 100;
@@ -102,6 +131,8 @@ const App = () => {
               position={state.position}
               email={state.email}
               phone={state.phone}
+              address={state.address}
+              addressIcon={state.addressIcon}
               photo={state.photo}
             />
             <br />
@@ -134,6 +165,8 @@ const App = () => {
               position={state.position}
               email={state.email}
               phone={state.phone}
+              address={state.address}
+              addressIcon={state.addressIcon}
               photo={"no-photo"}
             />
             <br />
@@ -226,7 +259,7 @@ const App = () => {
                 autoFocus={true}
                 inputProps={{maxLength :35}}
               />
-              <TextField
+              {/* <TextField
                 fullWidth={true}
                 required
                 label="Puesto"
@@ -234,7 +267,7 @@ const App = () => {
                 name={"position"}
                 onChange={handleChange}
                 inputProps={{maxLength :35}}
-              />
+              /> */}
               <TextField
                 fullWidth={true}
                 required
@@ -243,14 +276,42 @@ const App = () => {
                 name={"email"}
                 onChange={handleChange}
               />
-              <TextField
+              <Select
+                defaultValue= {1}
+                fullWidth ={true}
+                onChange = {(e) =>handleChangeSelect(e)}
+                name={"position"}
+                className={classes.centerSelect}
+              >
+                <MenuItem value={1}>Posicion</MenuItem>
+                {
+                  data.posiciones ? 
+                  data.posiciones.map(e => <MenuItem key={e} value={e}>{e}</MenuItem>) : 
+                  <MenuItem>Cargando opciones</MenuItem>
+                }
+              </Select>
+              <Select
+                defaultValue= {5}
+                fullWidth
+                onChange = {(e) =>handleChangeSelect(e)}
+                name={"sucursal"}
+                className={classes.centerSelect}
+              >
+                <MenuItem value={5}>Sucursal</MenuItem>
+                {
+                  infoSede.sedes ? 
+                  infoSede.sedes.map((e, index) => <MenuItem value={index}>{e.sede}</MenuItem>) : 
+                  <MenuItem>Cargando opciones</MenuItem>
+                }
+              </Select>
+              {/* <TextField
                 fullWidth={true}
                 required
                 label="Teléfono"
                 value={state.phone}
                 name={"phone"}
                 onChange={handleChange}
-              />
+              /> */}
               {/* <FormControlLabel
                 control={
                   <Switch

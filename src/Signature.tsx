@@ -119,7 +119,7 @@ const Signature = (props: PhotoSignatureProps) => {
                     <td  style={styleAdress}  colSpan={3} ><img style={styleSignatureImage} src="https://cofaral.s3.us-east-2.amazonaws.com/prod/images/firm/lugar_1.png" alt={""} />     Catamarca 1053 - Tucumán - CP:4000</td>
                 </tr> */}
                 <tr>
-                    <td  style={styleAdress}  colSpan={3} ><img style={styleSignatureImage} src="https://cofaral.s3.us-east-2.amazonaws.com/prod/images/firm/tucuman.png" height="15xt nmhjbpx"  alt={""} /><a href="https://goo.gl/maps/KKjiYxUMZRZRrxux6">Catamarca 1053 - Tucumán</a></td>
+                    <td  style={styleAdress}  colSpan={3} ><img style={styleSignatureImage} src={props.addressIcon} height="15xt nmhjbpx"  alt={""} /><a> {props.address}</a></td>
                 </tr> 
 
 
