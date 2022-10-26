@@ -1,0 +1,65 @@
+.signature {
+    height: 170px;
+    max-width: 100%;
+    white-space: nowrap;
+    background: #FFFFFF;
+    /* Agrego fuente solicitada */
+    font-family: 'Open Sans', sans-serif;
+}
+
+.social-logos-frame {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+    height: 32px;
+}
+
+.vertical-line {
+    width: 0;
+    height: 100%;
+    border-right: 1.5px solid #848688;
+    box-shadow: inset 0 0 0 1px #848688;
+    margin-right: 9px;
+    margin-left: 10px
+}
+
+.main-image {
+    width: 100%;
+    height: 150px;
+}
+
+.recicleText {
+    font-size: 14px;
+    align-items: center;
+}
+
+.iconSignature {
+    padding-right: 5px;
+    font-size: 20px !important;
+    color: #848688;
+    
+}
+.imgSignature {
+    padding-right: 5px;
+    vertical-align: bottom;
+}
+.imgSignatureEmail {
+    padding-right: 5px;
+    vertical-align: inherit;
+}
+
+.imgLinea{
+    height: 171px;
+    width: 3px;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+
+.name {
+    font-size: larger;
+}
+
+.position {
+    font-size: medium;
+}
