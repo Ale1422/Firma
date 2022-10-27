@@ -10,13 +10,13 @@
             "sede": "Salta",
             "direccion": "Alsina 1092 Salta",
             "tel": "0387 4311533 | 4211884",
-            "img":""
+            "img":"https://cofaral.s3.us-east-2.amazonaws.com/prod/images/firm/salta.png"
         },
         {
             "sede": "Chaco",
             "direccion": "25 de Mayo 656 Chaco",
             "tel":"0362 4444282 | 4425561",
-            "img":""
+            "img":"https://cofaral.s3.us-east-2.amazonaws.com/prod/images/firm/chaco.png"
         }
     ]
 }
